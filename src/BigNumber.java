@@ -21,11 +21,33 @@ public class BigNumber {
 
     }
 
+    public Object clone() {
+     return this;
+    }
+    
+    public void pad(int padTo) {
+        for (int i = number.size(); i < padTo; i++) {
+                number.add(i,0);
+            }
+    }
+    
+    public int size() { return number.size(); }
+    
     public String toString() {
         String temp = "";
-        for (int i = 0; i < number.size(); i++) {
+        for (int i = number.size() - 1; i >= 0; i--) {
             temp += number.get(i);
         }
+        return temp;
+    }
+    
+    public BigNumber add(BigNumber numberTwo) {
+        BigNumber temp = (BigNumber)this.clone();
+        int digits = number.size();
+        
+        
+        
+        
         return temp;
     }
 
@@ -35,6 +57,10 @@ public class BigNumber {
 
         System.out.println("Enter a number");
         BigNumber myNumber = new BigNumber(scan.next());
+        
+        System.out.println(myNumber.toString());
+        myNumber.pad(55);
+        System.out.println(myNumber.toString());
     }
 }
      
