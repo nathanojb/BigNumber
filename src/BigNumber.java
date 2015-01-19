@@ -49,7 +49,7 @@ public class BigNumber {
 	public void set(int i, int x) { number.set(i, x); }
 	public void add(int i, int x) { number.add(i ,x); }
 
-    
+	    
     public String toString() {
         String temp = "";
         for (int i = number.size() - 1; i >= 0; i--) {
@@ -83,7 +83,22 @@ public class BigNumber {
 		
         return temp;
     }
-
+	
+	public BigNumber multiply(BigNumber numberTwo) {
+		BigNumber temp = new BigNumber();
+		int digits = number.size();
+		
+		
+		for (int x = 0; x < digits; x++) {
+			for (int i = 1; i <= numberTwo.get(x); i++) {
+				temp = add(temp);
+			}
+			number.add(0,0);
+		}
+		
+		return temp;
+	}
+	
     public static void main(String[] args) throws Exception {
 
         /*
@@ -127,5 +142,15 @@ public class BigNumber {
 		
 		System.out.println(total.toString());
 		
+		
+		BigNumber one = new BigNumber("1234567890");
+		BigNumber two = new BigNumber("0987654321");
+		
+		System.out.println(one.multiply(two).toString());
+		
+		
     }
 }
+     
+        
+        
